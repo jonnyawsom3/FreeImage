@@ -479,8 +479,8 @@ EncodeImage(FIMEMORY *hmem, FIBITMAP *dib, int flags) {
 			config.lossless = 1;
 			// Size/speed trade-off. Method 0 quality 0 = fastest but largest. Method 6 quality 100 = slowest and smallest
 			// NOTE: "quality" when lossless is enabled is NOT related to anything visual, it purely effects time spent encoding
-			config.method = 1;
-			config.quality = 20;
+			config.method = 5;
+			config.quality = 90;
 			// Make sure lossless is actually lossless
 			picture.use_argb = 1;
 			config.exact = 1;
@@ -496,8 +496,7 @@ EncodeImage(FIMEMORY *hmem, FIBITMAP *dib, int flags) {
 			config.use_sharp_yuv = 1;
 			// Quality is between 0 (smallest file) and 100 (biggest) - defaults to 75
 			config.quality = (float)(flags & 0x7F);
-			// Forcing to 100 just to test some stuff, will revert later
-			if(config.quality < 100) {
+			if(config.quality > 100) {
 				config.quality = 100;
 			}
 		}
